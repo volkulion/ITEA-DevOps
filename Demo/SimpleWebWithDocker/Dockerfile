@@ -8,8 +8,6 @@ WORKDIR /src
 COPY ["SimpleWebWithDockker.csproj", ""]
 RUN dotnet restore "SimpleWebWithDockker.csproj"
 COPY . .
-WORKDIR "/SimpleWebWithDocker/"
-RUN dotnet build "SimpleWebWithDockker.csproj" -c Release -o /app
 
 FROM build AS publish
 RUN dotnet publish "SimpleWebWithDockker.csproj" -c Release -o /app
