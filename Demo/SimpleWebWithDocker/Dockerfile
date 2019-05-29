@@ -1,0 +1,30 @@
+# FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
+# WORKDIR /app
+# EXPOSE 80
+# EXPOSE 443
+
+# FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+# WORKDIR /src
+# COPY ["SimpleWebWithDockker.csproj", ""]
+# RUN dotnet restore "SimpleWebWithDockker.csproj"
+# COPY . .
+# WORKDIR "/SimpleWebWithDocker/"
+# RUN dotnet build "SimpleWebWithDockker.csproj" -c Release -o /app
+
+# FROM build AS publish
+# RUN dotnet publish "SimpleWebWithDockker.csproj" -c Release -o /app
+
+# FROM base AS final
+# WORKDIR /app
+# COPY --from=publish /app .
+# ENTRYPOINT ["dotnet", "SimpleWebWithDockker.dll"]
+
+
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+FROM build AS publish
+
+RUN dotnet publish "SimpleWebWithDockker.csproj" -c Release -o /app
+
+COPY /bin/Release/netcoreapp2.2/publish/ app/
+
+ENTRYPOINT ["dotnet", "app/SimpleWebWithDockker.dll"]
