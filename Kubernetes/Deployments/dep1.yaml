@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itea-deploy
+  labels:
+    app: net.core
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: net.core
+  template:
+    metadata:
+      labels:
+          app: net.core
+    spec:
+      containers:
+      - name: itea
+        image: mcnac/lab2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: v
+          value: "0.1"

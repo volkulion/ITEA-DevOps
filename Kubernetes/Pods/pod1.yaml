@@ -4,8 +4,7 @@ metadata:
   name: kubepod1
 spec:
   containers:
-  - name: sise
+  - name: itea
     image: mcnac/lab2
     ports:
     - containerPort: 5000
-      

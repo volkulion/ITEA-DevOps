@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itea-deploy
+  labels:
+    app: net.core
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: net.core
+  template:
+    metadata:
+      labels:
+        app: net.core
+    spec:
+      containers:
+      - name: itea
+        image: mcnac/lab2
+        ports:
+        - name: default
+          containerPort: 80
+
+        livenessProbe:
+           initialDelaySeconds: 60
+           periodSeconds: 5
+           httpGet:
+            path: /health
+            port: default  
+        env:
+            - name: v
+              value: "0.1"     
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iteaservice
+spec:
+  selector:
+    app: net.core
+  ports:
+    - name: http
+      protocol: TCP
+      port: 5000
+      targetPort: 80
+  clusterIP: 10.96.171.239
+  loadBalancerIP: 10.96.24.19
+  type: LoadBalancer
+
+
+ 
