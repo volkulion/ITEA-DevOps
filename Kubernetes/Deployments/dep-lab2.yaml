@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab2-deploy
+  labels:
+    app: net.core
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: net.core
+  template:
+    metadata:
+      labels:
+          app: net.core
+    spec:
+      containers:
+      - name: lab2
+        image: mcnac/lab2
+        ports:
+        - containerPort: 80
+        env:
+        - name: v
+          value: "0.1"
+        resources:
+        livenessProbe:
+           initialDelaySeconds: 60
+           periodSeconds: 5
+           httpGet:
+            path: /health
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /health 
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10

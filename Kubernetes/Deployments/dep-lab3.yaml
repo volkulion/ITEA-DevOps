@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lab2-deploy
+  name: lab3-deploy
   labels:
     app: net.core
 spec:
@@ -15,8 +15,8 @@ spec:
           app: net.core
     spec:
       containers:
-      - name: lab2
-        image: mcnac/lab2
+      - name: lab3
+        image: mcnac/lab3
         ports:
         - containerPort: 80
         env:
@@ -27,6 +27,11 @@ spec:
            initialDelaySeconds: 60
            periodSeconds: 5
            httpGet:
-            path: /health
-            port: default  
-            
+            path: /
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: / 
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
