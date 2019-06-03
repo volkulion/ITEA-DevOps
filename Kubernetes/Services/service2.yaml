@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: itea
-        image: mcnac/lab2
+        image: mcnac/lab3
         ports:
         - name: default
           containerPort: 80
@@ -25,7 +25,7 @@ spec:
            initialDelaySeconds: 60
            periodSeconds: 5
            httpGet:
-            path: /health
+            path: /
             port: default  
         env:
             - name: v
