@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: itea-deploy
+  name: lab2-deploy
   labels:
     app: net.core
 spec:
@@ -15,10 +15,18 @@ spec:
           app: net.core
     spec:
       containers:
-      - name: itea
+      - name: lab2
         image: mcnac/lab2
         ports:
-        - containerPort: 5000
+        - containerPort: 80
         env:
         - name: v
           value: "0.1"
+        resources:
+        livenessProbe:
+           initialDelaySeconds: 60
+           periodSeconds: 5
+           httpGet:
+            path: /health
+            port: default  
+            

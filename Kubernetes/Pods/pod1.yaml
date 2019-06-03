@@ -8,3 +8,5 @@ spec:
     image: mcnac/lab2
     ports:
     - containerPort: 5000
+    resources:
+      

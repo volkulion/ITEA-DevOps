@@ -20,7 +20,7 @@ spec:
         ports:
         - name: default
           containerPort: 80
-
+        resources:  
         livenessProbe:
            initialDelaySeconds: 60
            periodSeconds: 5
