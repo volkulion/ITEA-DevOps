@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: itea-deploy
+  name: iteaapi-deploy
   labels:
     app: net.core
 spec:
@@ -35,7 +35,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: iteaservice
+  name: iteaserviceapi
 spec:
   selector:
     app: net.core
