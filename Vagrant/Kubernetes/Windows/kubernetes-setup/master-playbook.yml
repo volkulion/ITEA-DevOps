@@ -80,7 +80,7 @@
 
   - name: Configure node ip
     lineinfile:
-      path: /etc/default/kubelet
+      path: /usr/bin/kubelet
       line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
 
   - name: Restart kubelet
