@@ -6,7 +6,7 @@ variable "admin_password" {
 }
 
 variable "resource_prefix" {
-    default = "itea_"
+    default = "it_"
 }
 
 variable "location" {
@@ -121,7 +121,7 @@ resource "azurerm_virtual_machine" "vm" {
         disable_password_authentication = false
     }
 
-   
+
     provisioner "remote-exec" {
         connection {
             host = "${azurerm_public_ip.publicIp.ip_address}"

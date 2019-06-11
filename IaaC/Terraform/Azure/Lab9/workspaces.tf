@@ -6,6 +6,6 @@ terraform {
 
     # rather than defining this inline, the Access Key can also be sourced
     # from an Environment Variable - more information is available below.
-    access_key = "QYOWIiLKPVBan1n5YKuZKgawNffom4//NhW1qAZzigVNi4UyONfKryast1B0y1PEzKlJ5sEfc66LUsTJx0Iq7Q=="
+    access_key = "d44RgCHunIPF9HqWi3cOn0cqkOtEJbT5rN4sglVXSjVkKZPxSG7Rs9VL3hcu3hxE/2+xGJw7Oe6f+rC2B4oqXg=="
   }
 }
