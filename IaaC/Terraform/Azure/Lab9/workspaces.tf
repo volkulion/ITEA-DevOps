@@ -1,7 +1,7 @@
 terraform {
   backend "azurerm" {
-    storage_account_name = "terraformv1"
-    container_name       = "tera"
+    storage_account_name = "terraformvolkulion"
+    container_name       = "terraformvolkulion"
     key                  = "dev.terraform.tera"
 
     # rather than defining this inline, the Access Key can also be sourced
